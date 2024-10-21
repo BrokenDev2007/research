@@ -1,0 +1,98 @@
+/* General styling */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7) url('../resources/bg.jpg') no-repeat center center fixed; /* Set background with transparency */
+    background-size: cover; /* Cover the entire viewport */
+}
+
+/* Header and Navigation */
+header {
+    background-color: #1e1e1e; /* Fully opaque background for the top bar */
+    color: #fff;
+    padding: 15px 0; /* Padding above and below */
+    position: fixed; /* Fix the header at the top */
+    width: 100%;
+    top: 0; /* Ensure it is at the very top */
+    z-index: 1000; /* Ensure it stays on top */
+    margin: 0; /* Remove margin */
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px; /* Adjusted padding */
+}
+
+/* Logo and Research Text */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    max-height: 60px; /* Adjust the logo height */
+}
+
+.research-text {
+    margin-left: 10px; /* Space between logo and text */
+    font-size: 1.5rem; /* Font size for the research text */
+    font-weight: 700;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center; /* Center icons and text vertically */
+}
+
+.nav-links a:hover {
+    color: #f5f5f5;
+}
+
+.nav-links a i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* SSH Terminal Section */
+.ssh-terminal {
+    background-color: rgba(40, 40, 40, 0.8); /* Grey opaque background */
+    padding: 20px; /* Padding around the text */
+    border-radius: 8px; /* Rounded corners */
+    margin: 80px 20px; /* Space from top and sides */
+    text-align: center; /* Center align text */
+}
+
+.terminal {
+    height: 400px; /* Height for the terminal */
+    background-color: black; /* Terminal background color */
+    border-radius: 4px; /* Rounded corners for terminal */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 1s forwards; /* Animate on load */
+}
