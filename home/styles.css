@@ -96,3 +96,11 @@ nav {
     opacity: 0; /* Initially hidden */
     animation: fadeIn 1s forwards; /* Animate on load */
 }
+
+#colab-section {
+    background-color: rgba(40, 40, 40, 0.8); /* Grey opaque background */
+    padding: 20px; /* Padding around the section */
+    border-radius: 8px; /* Rounded corners */
+    margin: 40px 20px; /* Space from top and sides */
+    text-align: center; /* Center align text */
+}
