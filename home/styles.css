@@ -1,106 +1,148 @@
-/* General styling */
+/* General styling for body */
 body {
-    margin: 0;
     font-family: 'Roboto', sans-serif;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.7) url('../resources/bg.jpg') no-repeat center center fixed; /* Set background with transparency */
-    background-size: cover; /* Cover the entire viewport */
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Dark background */
+    color: #fff; /* White text */
 }
 
-/* Header and Navigation */
 header {
-    background-color: #1e1e1e; /* Fully opaque background for the top bar */
-    color: #fff;
-    padding: 15px 0; /* Padding above and below */
-    position: fixed; /* Fix the header at the top */
-    width: 100%;
-    top: 0; /* Ensure it is at the very top */
-    z-index: 1000; /* Ensure it stays on top */
-    margin: 0; /* Remove margin */
+    background-color: #1f1f1f;
+    padding: 20px 0; /* Add padding for spacing */
 }
 
-/* Navigation styles */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: auto;
-    padding: 0 20px; /* Adjusted padding */
+    padding: 0 20px; /* Add horizontal padding */
 }
 
-/* Logo and Research Text */
 .logo-container {
     display: flex;
     align-items: center;
 }
 
 .logo-container img {
-    max-height: 60px; /* Adjust the logo height */
+    height: 50px; /* Adjust logo size */
 }
 
 .research-text {
-    margin-left: 10px; /* Space between logo and text */
-    font-size: 1.5rem; /* Font size for the research text */
     font-weight: 700;
+    margin-left: 10px;
+    font-size: 1.5em; /* Logo text size */
 }
 
-/* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
-}
-
-.nav-links li {
-    margin: 0 15px;
+    gap: 15px; /* Space between nav items */
 }
 
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
     transition: color 0.3s;
-    display: flex;
-    align-items: center; /* Center icons and text vertically */
 }
 
 .nav-links a:hover {
-    color: #f5f5f5;
-}
-
-.nav-links a i {
-    margin-right: 8px; /* Space between icon and text */
-}
-
-/* SSH Terminal Section */
-.ssh-terminal {
-    background-color: rgba(40, 40, 40, 0.8); /* Grey opaque background */
-    padding: 20px; /* Padding around the text */
-    border-radius: 8px; /* Rounded corners */
-    margin: 80px 20px; /* Space from top and sides */
-    text-align: center; /* Center align text */
-}
-
-.terminal {
-    height: 400px; /* Height for the terminal */
-    background-color: black; /* Terminal background color */
-    border-radius: 4px; /* Rounded corners for terminal */
-}
-
-/* Animations */
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-    opacity: 0; /* Initially hidden */
-    animation: fadeIn 1s forwards; /* Animate on load */
+    color: #1e90ff; /* Change color on hover */
 }
 
 #colab-section {
-    background-color: rgba(40, 40, 40, 0.8); /* Grey opaque background */
-    padding: 20px; /* Padding around the section */
-    border-radius: 8px; /* Rounded corners */
-    margin: 40px 20px; /* Space from top and sides */
-    text-align: center; /* Center align text */
+    background-color: rgba(50, 50, 50, 0.9); /* Grayish background */
+    padding: 20px;
+    margin: 20px; /* Space around section */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center text */
+}
+
+h2 {
+    margin-top: 0; /* Remove margin on top */
+}
+
+p {
+    margin: 10px 0; /* Space above and below paragraphs */
+}
+
+.action-button {
+    background-color: #1e90ff; /* Button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px; /* Round edges */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Animation */
+}
+
+.action-button:hover {
+    background-color: #007acc; /* Darker button on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem; /* Reduce header size */
+    }
+
+    p {
+        font-size: 1.2rem; /* Adjust paragraph size */
+    }
+
+    .start-button {
+        padding: 10px 20px; /* Adjust button padding */
+        font-size: 16px; /* Adjust button font size */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: center; /* Center items */
+    }
+
+    .nav-links a {
+        margin: 5px 0; /* Add space between links */
+        font-size: 1.2rem; /* Increase link size for better tapability */
+    }
+
+    #colab-section {
+        margin: 10px; /* Reduce margins on smaller screens */
+    }
+
+    .icon-container {
+        flex-direction: column; /* Stack icons vertically */
+        align-items: center; /* Center icons */
+    }
+
+    .icon {
+        font-size: 2rem; /* Adjust icon size for mobile */
+    }
+}
+
+/* Additional media query for smaller devices */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem; /* Further reduce header size */
+    }
+
+    p {
+        font-size: 1rem; /* Adjust paragraph size */
+    }
+
+    .start-button {
+        padding: 8px 15px; /* Further adjust button padding */
+        font-size: 14px; /* Further adjust button font size */
+    }
+
+    .logo-container img {
+        height: 40px; /* Adjust logo size for mobile */
+    }
+
+    .research-text {
+        font-size: 1.2em; /* Reduce logo text size for mobile */
+    }
 }
