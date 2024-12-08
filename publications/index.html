@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div id="hero-section">
+    <!-- Left Section: Welcome & Search -->
+    <div id="left-content">
+      <h2>Publications Hub @ research.chirag.cloud </h2>
+      <input type="text" id="searchBar" placeholder="Search articles...">
+    </div>
+
+    <!-- Right Section: Main Article -->
+    <div id="main-article">
+      <h2>Latest: BNCT - Boron Neutron Capture Therapy for Cancer Treatment</h2>
+      <p>Review Article: Learn how BNCT is a promising new approach to cancer treatment.</p>
+      <a href="article1.html" class="read-more">Read More</a>
+    </div>
+  </div>
+
+  <!-- All Articles Section -->
+  <div id="all-articles">
+    <div class="article-preview" id="article-1" data-title="Exploring the Depths of Space">
+      <h3>Exploring the Depths of Space</h3>
+      <p>An exciting journey through galaxies and beyond...</p>
+      <a href="article2.html" class="read-more">Read More</a>
+    </div>
+    <div class="article-preview" id="article-2" data-title="The Evolution of Telescopes">
+      <h3>The Evolution of Telescopes</h3>
+      <p>A timeline of advancements in astronomical observation...</p>
+      <a href="article3.html" class="read-more">Read More</a>
+    </div>
+    <div class="article-preview" id="article-3" data-title="Quantum Physics Made Simple">
+      <h3>Quantum Physics Made Simple</h3>
+      <p>Unlocking the mysteries of the quantum world...</p>
+      <a href="article4.html" class="read-more">Read More</a>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for search functionality
+    document.getElementById("searchBar").addEventListener("input", function () {
+      const searchTerm = this.value.toLowerCase();
+      const articles = document.querySelectorAll(".article-preview");
+
+      // Loop through articles to find matches
+      let matchFound = false;
+      articles.forEach((article) => {
+        const title = article.getAttribute("data-title").toLowerCase();
+        if (title.includes(searchTerm)) {
+          article.scrollIntoView({ behavior: "smooth", block: "center" });
+          matchFound = true;
+        }
+      });
+
+      // Display message if no match is found
+      if (!matchFound && searchTerm.trim() !== "") {
+        alert("No articles match your search.");
+      }
+    });
+  </script>
+</body>
+</html>
