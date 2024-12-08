@@ -1,114 +1,241 @@
 /* General styling for body */
 body {
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #000000, #111111); /* Deep black gradient */
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    background-color: #121212; /* Dark background */
+    color: #fff; /* White text */
 }
 
-/* Intro container */
-#intro {
-    text-align: center;
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    
-    /* Adding the animated GIF as the background */
-    background: url('./resources/postman.gif') no-repeat center center/cover;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    backdrop-filter: blur(5px); /* Optional: Adds blur effect to the GIF */
+header {
+    background-color: #1f1f1f;
+    padding: 20px 0; /* Add padding for spacing */
 }
 
-/* Text Styling */
-h1 {
-    font-size: 4rem;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-    color: #f5f5f5; /* Lighter shade of white */
-    text-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-    opacity: 0;
-    animation: fadeIn 2s ease forwards;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px; /* Add horizontal padding */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 50px; /* Adjust logo size */
+}
+
+.research-text {
+    font-weight: 700;
+    margin-left: 10px;
+    font-size: 1.5em; /* Logo text size */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Space between nav items */
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #1e90ff; /* Change color on hover */
+}
+
+#colab-section {
+    background-color: rgba(50, 50, 50, 0.9); /* Grayish background */
+    padding: 20px;
+    margin: 20px; /* Space around section */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center text */
+}
+
+h2 {
+    margin-top: 0; /* Remove margin on top */
 }
 
 p {
-    font-size: 1.7rem;
+    margin: 10px 0; /* Space above and below paragraphs */
+}
+
+.action-button {
+    background-color: #1e90ff; /* Button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px; /* Round edges */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Animation */
+}
+
+.action-button:hover {
+    background-color: #007acc; /* Darker button on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem; /* Reduce header size */
+    }
+
+    p {
+        font-size: 1.2rem; /* Adjust paragraph size */
+    }
+
+    .start-button {
+        padding: 10px 20px; /* Adjust button padding */
+        font-size: 16px; /* Adjust button font size */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: center; /* Center items */
+    }
+
+    .nav-links a {
+        margin: 5px 0; /* Add space between links */
+        font-size: 1.2rem; /* Increase link size for better tapability */
+    }
+
+    #publications-hub h2 {
+        font-size: 1.8rem; /* Adjust size for smaller screens */
+    }
+}
+
+/* Hero Section Styling */
+#hero {
+    position: relative;
+    height: 100vh; /* Full-screen height */
+    width: 100%; /* Full width */
+    background: linear-gradient(120deg, #1e1e1e, #121212); /* Gradient background */
+    overflow: hidden; /* Hide overflow from canvas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px; /* Padding for content on smaller screens */
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 2; /* Ensure content is above canvas */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.hero-content h1 span {
+    color: #1e90ff; /* Accent color for "Chirag Labs" */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #cccccc;
+    margin-bottom: 30px; /* Space below description */
+    max-width: 600px; /* Limit text width */
+    margin: 0 auto 30px; /* Center text */
+}
+
+.hero-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
     margin-bottom: 30px;
-    color: #dcdcdc; /* Slightly darker shade */
-    text-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-    opacity: 0;
-    animation: fadeInText 2s ease forwards;
-    animation-delay: 1s;
 }
 
-/* Button Styling */
-.start-button {
+.hero-icons i {
+    font-size: 2rem;
+    color: #1e90ff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero-icons i:hover {
+    transform: scale(1.2); /* Enlarge on hover */
+}
+
+.hero-btn {
     display: inline-block;
-    padding: 15px 35px;
-    background-color: #f5f5f5; /* Soft white button */
-    color: #111111; /* Black text */
-    font-size: 18px;
-    font-weight: bold;
+    background: linear-gradient(45deg, #ff7a18, #af002d);
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
     text-decoration: none;
-    border-radius: 30px;
-    transition: all 0.4s ease;
-    opacity: 0;
-    animation: fadeInButton 2s ease forwards;
-    animation-delay: 2s;
+    text-transform: uppercase;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.start-button:hover {
-    background-color: #ffffff; /* Pure white on hover */
-    color: #000000; /* Darker text on hover */
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+.hero-btn:hover {
+    background: linear-gradient(45deg, #ff4500, #a8001d);
+    transform: translateY(-3px);
 }
 
-/* Icon styling */
-.icon-container {
-    margin: 20px 0;
-    opacity: 0;
-    animation: fadeInIcons 2s ease forwards;
-    animation-delay: 1.5s;
+/* Animation Canvas */
+#dotCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Below content */
+    pointer-events: none; /* Allow interaction with overlay */
 }
 
-.icon {
-    font-size: 2.5rem;
-    margin: 0 15px;
-    transition: color 0.3s ease, transform 0.3s ease;
-    color: #ffffff; /* White icons */
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-icons i {
+        font-size: 1.8rem;
+    }
+
+    .hero-btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
 }
 
-.icon:hover {
-    color: #aaaaaa;
-    transform: scale(1.1);
-}
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
 
-/* Fade-in animations */
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(-20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
+    .hero-content p {
+        font-size: 0.9rem;
+    }
 
-@keyframes fadeInText {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
+    .hero-icons i {
+        font-size: 1.5rem;
+    }
 
-@keyframes fadeInButton {
-    0% { opacity: 0; transform: translateY(40px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInIcons {
-    0% { opacity: 0; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1); }
+    .hero-btn {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+    }
 }
