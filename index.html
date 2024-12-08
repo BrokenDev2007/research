@@ -3,69 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chirag Labs | Research & Innovation Hub</title>
-    
-    <!-- Meta Description for SEO -->
-    <meta name="description" content="Explore cutting-edge research and innovation at Chirag Labs. Dive into our experimental projects in cloud computing, AI, and tech innovations designed to shape the future.">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Chirag Labs | Research & Innovation Hub">
-    <meta property="og:description" content="Chirag Labs offers insights into experimental projects in cloud computing, AI, and tech innovation. Join us on our journey to build the future.">
-    <meta property="og:image" content="https://research.chirag.cloud/resources/logo.png">
-    <meta property="og:url" content="https://research.chirag.cloud">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Chirag Labs | Research & Innovation Hub">
-    <meta name="twitter:description" content="Discover experimental tech projects at Chirag Labs, focusing on cloud, AI, and emerging tech.">
-    <meta name="twitter:image" content="https://research.chirag.cloud/resources/logo.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="resources/logo.png">
-
+    <title>Chirag Labs - Research</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Link to CSS -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Structured Data for Chirag Labs -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ResearchProject",
-      "name": "Chirag Labs",
-      "description": "Chirag Labs explores experimental tech projects in cloud computing, AI, and innovation.",
-      "url": "https://research.chirag.cloud",
-      "logo": "https://research.chirag.cloud/resources/logo.png",
-      "sameAs": [
-        "https://github.com/brokendev2007",
-        "https://instagram.com/chiragroy2006"
-      ]
-    }
-    </script>
-
-    <!-- Sitemap -->
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://research.chirag.cloud/sitemap.xml" />
+    <!-- Xterm CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../resources/logo.png">
 </head>
 <body>
-    <section id="intro">
-        <div class="intro-container">
-            <h1 class="animated-text">Chirag Labs</h1>
-            <p class="animated-subtext">> Connected to Server: India, DL ✅</p>
-            
-            <!-- Icons can be placed here -->
-            <div class="icon-container">
-                <i class="fas fa-flask icon"></i>
-                <i class="fas fa-microscope icon"></i>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="../resources/logo.png" alt="Chirag Labs Logo"> <!-- Replace with your logo path -->
+                <span class="research-text">Research</span>
             </div>
+            <ul class="nav-links">
+                <li><a href="/projects"><i class="fas fa-th"></i> Projects</a></li>
+                <li><a href="/projects"><i class="fas fa-file-alt"></i> Publications</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <!-- Start Journey Button -->
-            <a href="/home" class="start-button">Launch In 🚀</a>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-overlay">
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <h1>Welcome to <span>Chirag Labs</span></h1>
+                <p>Empowering innovation through research, collaboration, and technology. Explore cutting-edge science and discoveries that shape our future.</p>
+                <div class="hero-icons">
+                    <i class="fas fa-brain"></i>
+                    <i class="fas fa-flask"></i>
+                    <i class="fas fa-microscope"></i>
+                    <i class="fas fa-atom"></i>
+                </div>
+                <a href="#publications-hub" class="hero-btn">Explore Publications</a>
+            </div>
         </div>
+        <!-- Animation Canvas -->
+        <canvas id="dotCanvas"></canvas>
     </section>
 
+
+
+
+
+    <!-- Include Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sshx/dist/sshx.js"></script>
     <script src="script.js"></script>
+    <script>
+        function startNewSession() {
+            // Reload the iframe to simulate starting a new session
+            const iframe = document.getElementById('ssh-iframe');
+            iframe.src = iframe.src; // Refresh the iframe to start a new session
+        }
+    </script>
 </body>
 </html>
