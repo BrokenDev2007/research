@@ -5,20 +5,24 @@ body {
     padding: 0;
     background-color: #121212; /* Dark background */
     color: #fff; /* White text */
+    box-sizing: border-box; /* Include padding and border in element width/height */
 }
 
 header {
     background-color: #1f1f1f;
     padding: 20px 0; /* Add padding for spacing */
+    width: 100%; /* Ensure header spans the full width */
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    width: 100%; /* Ensure navbar spans full width */
+    max-width: 1200px; /* Limit content width */
     margin: auto;
     padding: 0 20px; /* Add horizontal padding */
+    box-sizing: border-box; /* Include padding in the width */
 }
 
 .logo-container {
@@ -40,100 +44,102 @@ nav {
     list-style: none;
     display: flex;
     gap: 15px; /* Space between nav items */
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
     transition: color 0.3s;
+    padding: 10px 15px; /* Increase clickable area */
 }
 
 .nav-links a:hover {
     color: #1e90ff; /* Change color on hover */
 }
 
-#colab-section {
-    background-color: rgba(50, 50, 50, 0.9); /* Grayish background */
-    padding: 20px;
-    margin: 20px; /* Space around section */
-    border-radius: 10px; /* Rounded corners */
-    text-align: center; /* Center text */
-}
-
-h2 {
-    margin-top: 0; /* Remove margin on top */
-}
-
-p {
-    margin: 10px 0; /* Space above and below paragraphs */
-}
-
-.action-button {
-    background-color: #1e90ff; /* Button color */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 5px; /* Round edges */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Animation */
-}
-
-.action-button:hover {
-    background-color: #007acc; /* Darker button on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-}
-
-
-
-/* Media Queries for Mobile Responsiveness */
+/* Mobile View Adjustments for Navbar */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 3rem; /* Reduce header size */
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
     }
 
-    p {
-        font-size: 1.2rem; /* Adjust paragraph size */
-    }
-
-    .start-button {
-        padding: 10px 20px; /* Adjust button padding */
-        font-size: 16px; /* Adjust button font size */
+    .logo-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Logo on the left */
     }
 
     .nav-links {
-        flex-direction: column; /* Stack nav items vertically */
-        align-items: center; /* Center items */
+        flex: 1;
+        flex-direction: column; /* Stack links vertically */
+        align-items: flex-end; /* Align links to the right */
+        gap: 10px; /* Reduce gap for smaller screens */
     }
 
     .nav-links a {
         margin: 5px 0; /* Add space between links */
         font-size: 1.2rem; /* Increase link size for better tapability */
     }
+}
 
-    #publications-hub h2 {
-        font-size: 1.8rem; /* Adjust size for smaller screens */
-    }
+/* Section Styling */
+section {
+    width: 100%; /* Ensure full width */
+    max-width: 1200px; /* Limit content width */
+    padding: 40px 20px; /* Consistent padding for content */
+    margin: 0 auto; /* Center-align section */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+#colab-section, #publications-section, #hero {
+    background-color: rgba(50, 50, 50, 0.9); /* Match section background */
+    border-radius: 10px; /* Rounded corners */
 }
 
 /* Hero Section Styling */
 #hero {
     position: relative;
     height: 100vh; /* Full-screen height */
-    width: 100%; /* Full width */
+    width: 100vw; /* Full width of the viewport */
+    margin: 0; /* Remove margins */
+    padding: 0; /* Remove paddings */
     background: linear-gradient(120deg, #1e1e1e, #121212); /* Gradient background */
-    overflow: hidden; /* Hide overflow from canvas */
+    overflow: hidden; /* Prevent overflow issues */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
-    padding: 20px; /* Padding for content on smaller screens */
+    box-sizing: border-box; /* Ensure padding/border is included in size */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Full width for the entire viewport */
+    height: 100%; /* Full height for the viewport */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+#dotCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ensure the canvas covers full screen width */
+    height: 100vh; /* Ensure the canvas covers full screen height */
+    z-index: 1; /* Place it below content */
+    pointer-events: none; /* Let users interact with overlay content */
 }
 
 .hero-overlay {
     position: relative;
     z-index: 2; /* Ensure content is above canvas */
+    padding: 20px;
 }
 
 .hero-content h1 {
@@ -144,15 +150,15 @@ p {
 }
 
 .hero-content h1 span {
-    color: #1e90ff; /* Accent color for "Chirag Labs" */
+    color: #1e90ff; /* Accent color */
 }
 
 .hero-content p {
     font-size: 1.2rem;
     color: #cccccc;
-    margin-bottom: 30px; /* Space below description */
-    max-width: 600px; /* Limit text width */
-    margin: 0 auto 30px; /* Center text */
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin: 0 auto 30px; /* Center align text */
 }
 
 .hero-icons {
@@ -190,19 +196,12 @@ p {
     transform: translateY(-3px);
 }
 
-/* Animation Canvas */
-#dotCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Below content */
-    pointer-events: none; /* Allow interaction with overlay */
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    #hero {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
     .hero-content h1 {
         font-size: 2.5rem;
     }
@@ -238,4 +237,14 @@ p {
         font-size: 0.9rem;
         padding: 8px 20px;
     }
+}
+
+/* Footer Full-Width Adjustments */
+footer {
+    width: 100%;
+    background-color: #1f1f1f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
 }
