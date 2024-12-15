@@ -8,6 +8,7 @@ body {
     box-sizing: border-box; /* Include padding and border in element width/height */
 }
 
+/* Header Styling */
 header {
     background-color: #1f1f1f;
     padding: 20px 0; /* Add padding for spacing */
@@ -97,145 +98,134 @@ section {
 }
 
 #colab-section, #publications-section, #hero {
-    background-color: rgba(50, 50, 50, 0.9); /* Match section background */
+    background-color: none; /* Match section background */
     border-radius: 10px; /* Rounded corners */
 }
 
 /* Hero Section Styling */
 #hero {
-    position: relative;
-    height: 100vh; /* Full-screen height */
-    width: 100vw; /* Full width of the viewport */
-    margin: 0; /* Remove margins */
-    padding: 0; /* Remove paddings */
-    background: linear-gradient(120deg, #1e1e1e, #121212); /* Gradient background */
-    overflow: hidden; /* Prevent overflow issues */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    box-sizing: border-box; /* Ensure padding/border is included in size */
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%; /* Full width for the entire viewport */
-    height: 100%; /* Full height for the viewport */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-#dotCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Ensure the canvas covers full screen width */
-    height: 100vh; /* Ensure the canvas covers full screen height */
-    z-index: 1; /* Place it below content */
-    pointer-events: none; /* Let users interact with overlay content */
+    position: relative; /* Make sure updates are centered inside this */
+    width: 100%;
+    height: 100vh; /* Ensure it fills the full viewport height */
+    background-color: #121212; /* Dark background to match the overall theme */
 }
 
 .hero-overlay {
-    position: relative;
-    z-index: 2; /* Ensure content is above canvas */
-    padding: 20px;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: #ffffff;
-    font-weight: 700;
-}
-
-.hero-content h1 span {
-    color: #1e90ff; /* Accent color */
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    color: #cccccc;
-    margin-bottom: 30px;
-    max-width: 600px;
-    margin: 0 auto 30px; /* Center align text */
-}
-
-.hero-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.hero-icons i {
-    font-size: 2rem;
-    color: #1e90ff;
-    transition: transform 0.3s ease-in-out;
-}
-
-.hero-icons i:hover {
-    transform: scale(1.2); /* Enlarge on hover */
-}
-
-.hero-btn {
-    display: inline-block;
-    background: linear-gradient(45deg, #ff7a18, #af002d);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 3;
     color: white;
+    width: 80%;
+    max-width: 700px;
+    
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Latest Updates Section */
+#latest-updates {
+    position: absolute; /* Position relative to the hero section */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Correct centering with translate */
+    width: 90%; /* Adjust width for mobile responsiveness */
+    max-width: 800px; /* Limit width for larger screens */
+    text-align: left;
+    z-index: 3; /* Ensure it's above the canvas */
+    background-color: rgba(36, 36, 36, 0.7); /* Lighter grey background */
+    padding: 20px; /* Add padding to ensure content isn't touching the edges */
+    border-radius: 10px; /* Rounded corners for the updates container */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Light shadow for depth */
+}
+
+#latest-updates h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #1e90ff; /* Accent color */
+    border-bottom: 2px solid #1e90ff;
+    padding-bottom: 5px;
+}
+
+.update {
+    background: rgba(50, 50, 50, 0.7); /* Slightly lighter background for updates */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.update:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.update p {
+    font-size: 1rem;
+    margin: 0;
+    color: #fff;
+}
+
+.timestamp {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin-top: 5px;
+    display: block;
+    text-align: right;
+}
+
+/* Features Section */
+#features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+    background: #121212;
+    color: white;
+    flex-wrap: wrap;
+}
+
+.feature {
+    text-align: center;
+    margin: 20px;
+    max-width: 300px;
+}
+
+.feature i {
+    font-size: 3rem;
+    color: #1e90ff;
+    margin-bottom: 15px;
+}
+
+/* CTA Section */
+#cta {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(120deg, #1e90ff, #ff7a18);
+    color: white;
+}
+
+.cta-btn {
     padding: 12px 30px;
-    font-size: 1.1rem;
-    text-decoration: none;
-    text-transform: uppercase;
+    background: #121212;
+    color: white;
+    border: 2px solid white;
     border-radius: 25px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
 }
 
-.hero-btn:hover {
-    background: linear-gradient(45deg, #ff4500, #a8001d);
-    transform: translateY(-3px);
+.cta-btn:hover {
+    background: white;
+    color: #121212;
 }
 
-/* Responsive Adjustments */
+/* Mobile View Adjustments for Hero Section */
 @media (max-width: 768px) {
-    #hero {
-        padding: 10px; /* Adjust padding for smaller screens */
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .hero-icons i {
-        font-size: 1.8rem;
-    }
-
-    .hero-btn {
-        font-size: 1rem;
-        padding: 10px 25px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 0.9rem;
-    }
-
-    .hero-icons i {
-        font-size: 1.5rem;
-    }
-
-    .hero-btn {
-        font-size: 0.9rem;
-        padding: 8px 20px;
+    #latest-updates {
+        width: 100%; /* Ensure updates fill the width on smaller screens */
     }
 }
 
