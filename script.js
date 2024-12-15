@@ -1,86 +1,61 @@
-// Dot-Connection Animation
-const canvas = document.getElementById("dotCanvas");
+const canvas = document.getElementById("heroCanvas");
 const ctx = canvas.getContext("2d");
-
-let particles = [];
-const mouse = { x: null, y: null, radius: 120 };
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Particle Constructor
+let particlesArray = [];
+
+// Particle class
 class Particle {
-    constructor(x, y, size) {
+    constructor(x, y, size, color, velocityX, velocityY) {
         this.x = x;
         this.y = y;
         this.size = size;
-        this.baseX = x;
-        this.baseY = y;
-        this.dx = 0;
-        this.dy = 0;
+        this.color = color;
+        this.velocityX = velocityX;
+        this.velocityY = velocityY;
     }
 
     draw() {
-        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
         ctx.fill();
     }
 
     update() {
-        this.dx = mouse.x - this.x;
-        this.dy = mouse.y - this.y;
-        let distance = Math.sqrt(this.dx ** 2 + this.dy ** 2);
+        this.x += this.velocityX;
+        this.y += this.velocityY;
 
-        if (distance < mouse.radius) {
-            let angle = Math.atan2(this.dy, this.dx);
-            this.x -= Math.cos(angle) * 3;
-            this.y -= Math.sin(angle) * 3;
-        } else {
-            this.x += (this.baseX - this.x) * 0.05;
-            this.y += (this.baseY - this.y) * 0.05;
+        // Bounce off edges
+        if (this.x + this.size > canvas.width || this.x - this.size < 0) {
+            this.velocityX = -this.velocityX;
+        }
+        if (this.y + this.size > canvas.height || this.y - this.size < 0) {
+            this.velocityY = -this.velocityY;
         }
     }
 }
 
-// Initialize Particles
+// Initialize particles
 function initParticles() {
-    particles = [];
-    const density = Math.min(canvas.width, canvas.height) / 20;
-
-    for (let i = 0; i < density; i++) {
-        let size = Math.random() * 2 + 1;
-        let x = Math.random() * canvas.width;
-        let y = Math.random() * canvas.height;
-        particles.push(new Particle(x, y, size));
+    particlesArray = [];
+    for (let i = 0; i < 100; i++) {
+        const size = Math.random() * 5 + 2;
+        const x = Math.random() * (canvas.width - size * 2) + size;
+        const y = Math.random() * (canvas.height - size * 2) + size;
+        const color = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.8)`;
+        const velocityX = Math.random() * 1 - 0.5;
+        const velocityY = Math.random() * 1 - 0.5;
+        particlesArray.push(new Particle(x, y, size, color, velocityX, velocityY));
     }
 }
 
-// Connect Particles
-function connectParticles() {
-    for (let a = 0; a < particles.length; a++) {
-        for (let b = a; b < particles.length; b++) {
-            let dx = particles[a].x - particles[b].x;
-            let dy = particles[a].y - particles[b].y;
-            let distance = Math.sqrt(dx ** 2 + dy ** 2);
-
-            if (distance < 100) {
-                ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(particles[a].x, particles[a].y);
-                ctx.lineTo(particles[b].x, particles[b].y);
-                ctx.stroke();
-            }
-        }
-    }
-}
-
-// Animation Loop
+// Animate particles
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach((particle) => {
+    particlesArray.forEach((particle) => {
         particle.update();
         particle.draw();
     });
@@ -88,19 +63,52 @@ function animateParticles() {
     requestAnimationFrame(animateParticles);
 }
 
-// Mouse Interaction
-window.addEventListener("mousemove", (event) => {
-    mouse.x = event.x;
-    mouse.y = event.y;
-});
+// Connect particles with lines
+function connectParticles() {
+    for (let i = 0; i < particlesArray.length; i++) {
+        for (let j = i; j < particlesArray.length; j++) {
+            const dx = particlesArray[i].x - particlesArray[j].x;
+            const dy = particlesArray[i].y - particlesArray[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
 
-// Resize Canvas
+            if (distance < 100) {
+                ctx.beginPath();
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+                ctx.lineWidth = 1;
+                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+}
+
+// Resize canvas on window resize
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     initParticles();
 });
 
-// Initialize and Start Animation
+// Start animation
 initParticles();
 animateParticles();
+
+// Latest updates section
+const updates = [
+    { text: "The newsletter services are live now. Subscribe to our newsletter below! 🗞️", time: "1 hour ago" },
+    { text: "We just launched our first backend server managing user requests. 🚀", time: "5 hours ago" },
+    { text: "We just connected our open source article library, visit 'Publications' now! 📑", time: "10 hours ago" },
+];
+
+const updatesContainer = document.getElementById('latest-updates');
+
+updates.forEach(update => {
+    const updateDiv = document.createElement('div');
+    updateDiv.classList.add('update');
+    updateDiv.innerHTML = `
+        <p><strong>Chirag:</strong> ${update.text}</p>
+        <span class="timestamp">${update.time}</span>
+    `;
+    updatesContainer.appendChild(updateDiv);
+});
