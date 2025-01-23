@@ -96,9 +96,9 @@ animateParticles();
 
 // Latest updates section
 const updates = [
-    { text: "The newsletter services are live now. Subscribe to our newsletter below! 🗞️", time: "1 hour ago" },
-    { text: "We just launched our first backend server managing user requests. 🚀", time: "5 hours ago" },
-    { text: "We just connected our open source article library, visit 'Publications' now! 📑", time: "10 hours ago" },
+    { text: "We are hiring volunteers, E-mail to apply: research@chirag.cloud ✉️", time: "5 hours ago" },
+    { text: "We just launched our official blog-site to post public content 🌐", time: "12 hours ago" },
+    { text: "The newsletter services are live now. Subscribe to our newsletter below! 🗞️", time: "34 days ago" },
 ];
 
 const updatesContainer = document.getElementById('latest-updates');
