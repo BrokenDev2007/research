@@ -94,21 +94,57 @@ window.addEventListener("resize", () => {
 initParticles();
 animateParticles();
 
-// Latest updates section
-const updates = [
-    { text: "We are hiring volunteers, E-mail to apply: research@chirag.cloud ✉️", time: "5 hours ago" },
-    { text: "We just launched our official blog-site to post public content 🌐", time: "12 hours ago" },
-    { text: "The newsletter services are live now. Subscribe to our newsletter below! 🗞️", time: "34 days ago" },
-];
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
 
-const updatesContainer = document.getElementById('latest-updates');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
 
-updates.forEach(update => {
-    const updateDiv = document.createElement('div');
-    updateDiv.classList.add('update');
-    updateDiv.innerHTML = `
-        <p><strong>Chirag:</strong> ${update.text}</p>
-        <span class="timestamp">${update.time}</span>
-    `;
-    updatesContainer.appendChild(updateDiv);
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+    }
+
+    // Latest updates section
+    const updatesContainer = document.getElementById('latest-updates');
+    if (updatesContainer) {
+        const updates = [
+            { text: "We are hiring volunteers, E-mail to apply: research@chirag.cloud ✉️", time: "5 hours ago" },
+            { text: "We just launched our official blog-site to post public content 🌐", time: "12 hours ago" },
+            { text: "The newsletter services are live now. Subscribe to our newsletter below! 🗞️", time: "34 days ago" },
+        ];
+
+        updates.forEach(update => {
+            const updateDiv = document.createElement('div');
+            updateDiv.classList.add('update');
+            updateDiv.innerHTML = `
+                <p><strong>Chirag:</strong> ${update.text}</p>
+                <span class="timestamp">${update.time}</span>
+            `;
+            updatesContainer.appendChild(updateDiv);
+        });
+    }
 });
